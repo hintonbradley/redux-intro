@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Intro to Redux</title>
+</head>
+<body>
+    <h1 class="header">INTRO TO REDUX</h1>
+    <div class="border1 border">
+        <h3 class="header">REDUX CYCLE</h3>
+        <section class="card">
+            <div class="text">
+                <p>Official terminology of each step of what happens internally inside Redux.</p>
+            </div>
+            <img class="medium" src="img/reduxCycle.jpg" alt="Redux cycle">
+        </section>
+    </div>
+    <div class='border2 border'>
+        <h3 class="header">INSURANCE COMPANY</h3>
+        <section class="card-dark">
+            <div class="text">
+                <p>Using an insurance company as an analogy for how Redux works. This is a diagram of our insurance company. The company's 'headquarters' has three departments - Claims History, Policies and Accounting.</p>
+            </div>
+            <img src="img/insuranceCo.jpg" alt="Insurance company overview">
+        </section>
+        <section class="card-light">
+            <div class="text">
+                <p>A customer fills out a form to sign up for a new policy or start a claim (if they already have a policy). Instead of handing it off to the separate departments directly, the customer passes it off to the company's form receiver.</p>
+            </div>
+            <img class="small" src="img/formPass.jpg" alt="Passing form example">
+        </section>
+        <section class="card-dark">
+            <div class="text">
+                <p>The company's form receiver makes copies of the customer's form and passes off a copy to each department whether they need it or not.</p>
+            </div>
+            <img src="img/formDepartments.jpg" alt="Passing form to departments">
+        </section>
+
+        <section class="card-light">
+            <h4 class="txt-ctr">Steps of what would happen if a new customer signed up for a new policy with the insurance company...</h4>
+            <div class="text">
+                <ol>
+                    <li>Customer fills out a form and hands it off to the form receiver.</li>
+                    <li>Form receiver makes copies and hands off a copy to the policies department.</li>
+                    <li> <p>The policies department (who maintains a list of all customers who have policies - as listed below) grabs the list...</p>
+                        <img class="small" src="img/newPolicyForm.jpg" alt="Passing new policy form">
+                    </li>
+                    <li><p>...and adds the new policy holder to that list.</p>
+                        <img class="small" src="img/newPolicyForm2.jpg" alt="Adding new policy to list">
+                    </li>
+                </ol>
+            </div>
+        </section>
+        <section class="card-dark">
+            <div class="text">
+                <p>However, now we have the company's management knocking on the door of each department (at random times) wanting a most updated version of each list. But managment doesn't like knocking on doors each time they want an updated version, so...</p>
+            </div>
+            <img class="medium" src="img/addManagement.jpg" alt="Adding management">
+            <div class="text">
+                <p>...in the company there will be a place where all the most up to date data is held. Whenever a department updates their list, the updated list is put into the 'All Department Data' area. Now management cann access the most up to date information at any time in one place.</p>
+            </div>
+            <img class="medium" src="img/allData.jpg" alt="All company data storage">
+            <div class="text">
+                <p>Note: When a department gets new data, the Form Receiver gathers the departments list from the All Department Data, gives it to the department (with the form), and then the department (after updating the list) puts the list back into the All Department Data area.</p>
+            </div>
+        </section>
+        <section class="card-light">
+            <div class="text">
+                <p>Each form is going to have two parts - a <span class="blue">Type</span> and a <span class="blue">Payload</span>. Since each form will have a different purpose, we have different types to differentiate them from each other.</p>
+            </div>
+            <img class="small" src="img/formParts.jpg" alt="Parts of a form">
+        </section>
+        <section class="card-dark">
+            <div class="text">
+                <p>Below, we will set up three types of forms - one for each department.</p>
+                <ul>
+                    <li>Policy - create a policy</li>
+                    <li>Claims - create a claim</li>
+                    <li>Claims - delete a policy</li>
+                </ul>
+            </div>
+            <img class="small" src="img/formTypes.jpg" alt="Types of forms">
+        </section>
+        <section class="card-light">
+            <div class="text">
+                <ol>
+                    <li>A form is made from a customer to create a new claim.</li>
+                    <li>Form receiver makes copies of the form and deliveres it to all departments.</li>
+                    <li>Before the form receiver takes a copy of the form to the Claims Department, it also picks up a copy of the most recent claims history list from the All Department Data area. It then delivers the list and a copy of the form to the Claims Department.</li>
+                    <li>Claims Department looks at the form and asks if it is relevent to them - aka. is the form creating a claim?</li>
+                    <li>If not, the Claims Department returns the list unchanged to the All Department Data area.</li>
+                    <li>If so, the Claims Department pulls the payload from the form, adds the info to the list of claims and returns the updated list to the All Department Data area. </li>
+                </ol>
+            </div>
+            <img src="img/claimsProcess.jpg" alt="Claim process">
+            <div class="text">
+                <p>Similar instance happens when a customer fills out a claim type form...</p>
+            </div>
+            <img src="img/accountingProcess.jpg" alt="Accounting process">
+            <div class="text">
+                <p>...and the Policies department.</p>
+            </div>
+            <img src="img/policiesProcess.jpg" alt="Policies process">
+        </section>
+    </div>
+
+    <div class="border3 border">
+        <h3 class="header">REDUX CYCLE BREAKDOWN</h3>
+        <section class="card-dark">
+            <div class="text">
+                <p>Matching up each step of the insurance company with a process or action in Redux.</p>
+            </div>
+            <img class="medium" src="img/reduxCompare.jpg" alt="Comparing Insurance Co to Redux">
+        </section>
+        <section class="card-light">
+            <div class="text">
+                <p>The Action Creator is a function that will create (or return) a plain JavaScript object.</p>
+            </div>
+            <img class="xsm" src="img/actionCreator.jpg" alt="Comparing Insurance Co to Redux">
+        </section>
+        <section class="card-dark">
+            <div class="text">
+                <p>The Action is the JavaScript object that is returned from an Action Creator, which has a 'Type' and a 'Payload' property.</p>
+                <p>The Type property describes a change we want to make to our data.</p>
+                <p>The payload property describes what context of the change we want to make.</p>
+            </div>
+            <img class="xsm" src="img/action.jpg" alt="Comparing Insurance Co to Redux">
+        </section>
+        <section class="card-light">
+            <div class="text">
+                <p>The Dispatch is a function that takes in an action (object), makes copies of that action and pass it off to a number of different places (departments) inside our application.</p>
+            </div>
+            <img class="xsm" src="img/dispatch.jpg" alt="Comparing Insurance Co to Redux">
+        </section>
+        <section class="card-dark">
+            <div class="text">
+                <p>A Reducer is a function that is responsible for taking in an Action and some data (list), and then processes that action, makes changes to the data (list) and return it so it can be centralized in some location.</p>
+            </div>
+            <img class="xsm" src="img/reducer.jpg" alt="Comparing Insurance Co to Redux">
+        </section>
+        <section class="card-light">
+            <div class="text">
+                <p>State is a central repository of all information that's created by the Reducers.</p>
+                <p>All information gets consolidated in the State object so our application (management) can reach into one place to get all the information it needs.</p>
+            </div>
+            <img class="xsm" src="img/state.jpg" alt="Comparing Insurance Co to Redux">
+        </section>
+    </div>
+
+    <div class="border4 border">
+        <h3 class="header">ACTION CREATOR</h3>
+        <section class="card-dark">
+            <h4 class="txt-ctr">Action Creator to create a policy.</h4>
+            <div class="text">
+                <p>In order to create an Action with our Action Creator, we need a Type and Payload in our JavaScript object that is going to be returned.</p>
+                <p>Note: All Action Creators will basically have this same setup and look.</p>
+                <p>Note: When creating a type, we normally use upper-case and underscores.</p>
+            </div>
+            <img class="small" src="img/actionCreatorExample.jpg" alt="Action Creator example">
+        </section>
+    </div>
+    <div class="border5 border">
+        <h3 class="header">REDUCER</h3>
+        <section class="card-light">
+            <h4 class="txt-ctr">Reducer for claims.</h4>
+            <div class="text">
+                <p>When creating a Reducer, we follow these steps.</p>
+                <ol>
+                    <li>We first test to see if the Type is a match. (CREATE_CLAIM)</li>
+                    <li>If Type is a match, we want to return a <span class="red">NEW</span> array. (do not modify existing array)</li>
+                    <li>If Type is not a match, we return the original list unchanged. (return oldListClaims)</li>
+                </ol>
+                <p>Note: If the Reducer is getting called for the first time, there will be no list (or previous data) that will be included in the fuction call. Therefore, we need to add code that will simply supply an empty array if the oldListOfClaims is undefined. ( = [] )</p>
+            </div>
+            <img class="medium" src="img/reducerExample.jpg" alt="Reducer example">
+            <div class="text">
+                <p>Note: If we are trying to delete a policy (data), then we must return a new array without the data we want removed. (i.e. return listOfPolicies.filter(name => name !== action.payload.name</p>
+            </div>
+            <img class="medium" src="img/reducerDeleteExample.jpg" alt="Reducer delete example">
+        </section>
+    </div>
+
+    <div class="border6 border">
+        <h3 class="header">STORE</h3>
+        <section class="card-dark">
+            <div class="text">
+                <p>A store is an object that holds the application's state tree.</p>
+                <p>There should only be a single store in a Redux app, as the composition happens on the reducer level.</p>
+                <p>Another definition of a store is an assembly of a collection of different Reducers and Action Creators.</p>
+                <p>To create a Store for your application...</p>
+            </div>
+            <img class="small" src="img/storeCreation.jpg" alt="Creating a store">
+            <div class="text">
+                <ol>
+                    <li>We pull two fuctions from the Redux library: createStore & combineReducers</li>
+                    <li>We use the combineReduers function to combine all our departments (reducers) together - calling it ourDepartments. This is basically combining all ways of updating our state together.</li>
+                    <li>We create a store by using the createStore function and pass in ourDepartments.</li>
+                    <li>The store objects now represents our entire Redux application. It now holds access to all our Reducers and all our State we will need for our application. </li>
+                </ol>
+            </div>
+        </section>
+        <section class="card-light">
+            <div class="text">
+                <p>There are a number of methods we can use that are already on the store object.</p>
+                <ol>
+                    <li>.dispatch() - takes an Action that has been made by an Action Creator and passes it to the Reducers.</li>
+                    <li>.getState() - Returns the state of the Redux store.</li>
+                </ol>
+            </div>
+            <img src="img/storeMethods.jpg" alt="Important Store methods">
+            <div class="text">
+                <p>Note: The createPolicy and deletePolicy methods are Action Creators we built ourserves in a previous step. We use it to create an Action and pass that Action into the built-in .dispatch method.</p>
+            </div>
+        </section>
+    </div>
+
+    <div class="border1 border">
+        <h3 class="header">REDUX CYCLE</h3>
+        <section class="card-dark">
+            <div class="text">
+                <p>Anytime we want to change the State or data of our application, the Redux cycle is as follows...</p>
+            </div>
+            <img src="img/reduxCycle2.jpg" alt="Final Redux Cycle">
+            <div class="text">
+                <ol>
+                    <li>We call an Action Creator which produces (returns) an Action (object)</li>
+                    <li>The Action describes exactly how we want to change the data inside our application</li>
+                    <li>The Action object gets fed to the Dispatch function.</li>
+                    <li>The Dispatch function makes copies of the Action and gives it to each one of the Reducers</li>
+                    <li>The Reducers are going to run those Actions and update the data and return the new data</li>
+                    <li>The data that's returned is put into the State object</li>
+                    <li>Then we wait until we need to update State again</li>
+                </ol>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
