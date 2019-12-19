@@ -5,6 +5,16 @@ html, body {
     line-height: 1.25;
 }
 
+nav h1, nav ul { 
+    margin: 1vw auto;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-around;
+    padding: 0;
+}
+
 .txt-ctr {
     text-align: center;
 }
@@ -17,12 +27,31 @@ html, body {
     color: red;
 }
 
+nav.header {
+    margin: 0 0 1vw 0;
+    background: #fff;
+    color: black;
+}
+
+nav li {
+    list-style: none;
+}
+
+nav a {
+    color: #000;
+}
+
 .header {
     margin: 0;
-    padding: 2vw 0;
+    padding: 1vw 0;
     background: black;
     color: #fff;
     text-align: center;
+}
+
+.card-dark, .card-light {
+    width: 85%;
+    margin: 5vw auto;
 }
 
 section {
