@@ -11,12 +11,12 @@
     <nav>
         <h1 class="txt-ctr">INTRO TO REDUX</h1>
         <ul class="flex">
-            <li><a href="#analogy">Analogy</a></li>
-            <li><a href="#breakdown">Comparison</a></li>
-            <li><a href="#action-creator">Action Creator</a></li>
-            <li><a href="#reducers">Reducers</a></li>
-            <li><a href="#store">Store</a></li>
-            <li><a href="#cycle">Cycle</a></li>
+            <li class="border2 border"><a href="#analogy">Analogy</a></li>
+            <li class="border3 border"><a href="#breakdown">Comparison</a></li>
+            <li class="border4 border"><a href="#action-creator">Action Creator</a></li>
+            <li class="border5 border"><a href="#reducers">Reducers</a></li>
+            <li class="border6 border"><a href="#store">Store</a></li>
+            <li class="border1 border"><a href="#cycle">Cycle</a></li>
         </ul>
     </nav>
     <div class="border1 border">
@@ -34,7 +34,7 @@
             <div class="text">
                 <p>Using an insurance company as an analogy for how Redux works. This is a diagram of our insurance company. The company's 'headquarters' has three departments - Claims History, Policies and Accounting.</p>
             </div>
-            <img src="img/insuranceCo.jpg" alt="Insurance company overview">
+            <img class="large" src="img/insuranceCo.jpg" alt="Insurance company overview">
         </section>
         <section class="card-light">
             <div class="text">
@@ -53,13 +53,21 @@
             <h4 class="txt-ctr">Steps of what would happen if a new customer signed up for a new policy with the insurance company...</h4>
             <div class="text">
                 <ol>
-                    <li>Customer fills out a form and hands it off to the form receiver.</li>
-                    <li>Form receiver makes copies and hands off a copy to the policies department.</li>
-                    <li> <p>The policies department (who maintains a list of all customers who have policies - as listed below) grabs the list...</p>
-                        <img class="small" src="img/newPolicyForm.jpg" alt="Passing new policy form">
+                    <li>
+                        <p>Customer fills out a form and hands it off to the form receiver.</p>
+                        <img class="small" src="img/formPass.jpg" alt="Passing form example">
                     </li>
-                    <li><p>...and adds the new policy holder to that list.</p>
-                        <img class="small" src="img/newPolicyForm2.jpg" alt="Adding new policy to list">
+                    <li>
+                        <p>Form receiver makes copies and hands one to the Policies department. (A copy of the form is given to each of the departments, but for this example we're just focusing on the Policies department.</p>
+                        <img class="large" src="img/formDepartments.jpg" alt="Passing form to departments">
+                    </li>
+                    <li>
+                        <p>The Policies department (who maintains a list of all customers who have policies - as listed below) grabs the list...</p>
+                        <img class="medium" src="img/newPolicyForm.jpg" alt="Passing new policy form">
+                    </li>
+                    <li>
+                        <p>...and adds the new policy holder to that list.</p>
+                        <img class="medium" src="img/newPolicyForm2.jpg" alt="Adding new policy to list">
                     </li>
                 </ol>
             </div>
@@ -92,7 +100,7 @@
                     <li>Claims - delete a policy</li>
                 </ul>
             </div>
-            <img class="small" src="img/formTypes.jpg" alt="Types of forms">
+            <img class="medium" src="img/formTypes.jpg" alt="Types of forms">
         </section>
         <section class="card-light">
             <div class="text">
@@ -129,7 +137,7 @@
             <div class="text">
                 <p>The Action Creator is a function that will create (or return) a plain JavaScript object.</p>
             </div>
-            <img class="xsm" src="img/actionCreator.jpg" alt="Comparing Insurance Co to Redux">
+            <img class="xsmall" src="img/actionCreator.jpg" alt="Comparing Insurance Co to Redux">
         </section>
         <section class="card-dark">
             <div class="text">
@@ -137,26 +145,26 @@
                 <p>The Type property describes a change we want to make to our data.</p>
                 <p>The payload property describes what context of the change we want to make.</p>
             </div>
-            <img class="xsm" src="img/action.jpg" alt="Comparing Insurance Co to Redux">
+            <img class="xsmall" src="img/action.jpg" alt="Comparing Insurance Co to Redux">
         </section>
         <section class="card-light">
             <div class="text">
                 <p>The Dispatch is a function that takes in an action (object), makes copies of that action and pass it off to a number of different places (departments) inside our application.</p>
             </div>
-            <img class="xsm" src="img/dispatch.jpg" alt="Comparing Insurance Co to Redux">
+            <img class="xsmall" src="img/dispatch.jpg" alt="Comparing Insurance Co to Redux">
         </section>
         <section class="card-dark">
             <div class="text">
                 <p>A Reducer is a function that is responsible for taking in an Action and some data (list), and then processes that action, makes changes to the data (list) and return it so it can be centralized in some location.</p>
             </div>
-            <img class="xsm" src="img/reducer.jpg" alt="Comparing Insurance Co to Redux">
+            <img class="xsmall" src="img/reducer.jpg" alt="Comparing Insurance Co to Redux">
         </section>
         <section class="card-light">
             <div class="text">
                 <p>State is a central repository of all information that's created by the Reducers.</p>
                 <p>All information gets consolidated in the State object so our application (management) can reach into one place to get all the information it needs.</p>
             </div>
-            <img class="xsm" src="img/state.jpg" alt="Comparing Insurance Co to Redux">
+            <img class="xsmall" src="img/state.jpg" alt="Comparing Insurance Co to Redux">
         </section>
     </div>
 
@@ -169,7 +177,7 @@
                 <p>Note: All Action Creators will basically have this same setup and look.</p>
                 <p>Note: When creating a type, we normally use upper-case and underscores.</p>
             </div>
-            <img class="small" src="img/actionCreatorExample.jpg" alt="Action Creator example">
+            <img class="medium" src="img/actionCreatorExample.jpg" alt="Action Creator example">
         </section>
     </div>
 
@@ -203,7 +211,7 @@
                 <p>Another definition of a store is an assembly of a collection of different Reducers and Action Creators.</p>
                 <p>To create a Store for your application...</p>
             </div>
-            <img class="small" src="img/storeCreation.jpg" alt="Creating a store">
+            <img class="medium" src="img/storeCreation.jpg" alt="Creating a store">
             <div class="text">
                 <ol>
                     <li>We pull two fuctions from the Redux library: createStore & combineReducers</li>
@@ -234,7 +242,7 @@
             <div class="text">
                 <p>Anytime we want to change the State or data of our application, the Redux cycle is as follows...</p>
             </div>
-            <img src="img/reduxCycle2.jpg" alt="Final Redux Cycle">
+            <img class="medium" src="img/reduxCycle2.jpg" alt="Final Redux Cycle">
             <div class="text">
                 <ol>
                     <li>We call an Action Creator which produces (returns) an Action (object)</li>
