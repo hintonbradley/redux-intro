@@ -70,7 +70,7 @@ nav a {
 
 section {
     padding: 3vw;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 section.card-dark {
@@ -119,6 +119,11 @@ img.small {
 
 img.xsmall {
     width: 25%;
+    max-width: 200px;
+}
+
+.spacing {
+    padding-top: 100px;
 }
 
 .border {
@@ -126,38 +131,57 @@ img.xsmall {
     border-style: solid;
 }
 
-div.border {
-    padding-top: 100px;
-}
-
 .border1 {
     border-color: violet;
+}
+
+.spacing .border1 {
+    background: violet;
 }
 
 .border2 {
     border-color: lime;
 }
 
+.spacing .border2 {
+    background: lime;
+}
+
 .border3 {
     border-color: red;
+}
+
+.spacing .border3 {
+    background: red;
 }
 
 .border4 {
     border-color: yellow;
 }
 
+.spacing .border4 {
+    background: yellow;
+}
+
 .border5 {
     border-color: lightseagreen;
+}
+
+.spacing .border5 {
+    background: lightseagreen;
 }
 
 .border6 {
     border-color: lightsalmon;
 }
 
+.spacing .border6 {
+    background: lightsalmon;
+}
+
 @media only screen and (max-width: 767px) {
     section {
         padding: 2vw;
-        font-size: 16px;
     }
 
     img, img.xsmall, img.small, img.medium, img.large {
